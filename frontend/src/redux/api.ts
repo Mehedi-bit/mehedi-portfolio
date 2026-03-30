@@ -1,8 +1,9 @@
 import axios from 'axios';
 
+console.log('API URL:', import.meta.env.VITE_API_URL);
 
 const api = axios.create({
-  baseURL: 'https://mehedi-portfolio-vx4i.onrender.com/api',
+  baseURL: `${import.meta.env.VITE_API_URL}/api`,
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
