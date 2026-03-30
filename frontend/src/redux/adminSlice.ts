@@ -18,7 +18,6 @@ export const fetchAdmin = createAsyncThunk<Settings>(
     async (_, { rejectWithValue }) => {
         try {
             const response = await api.get('/settings');
-            console.log(response.data)
             return response.data;
         } catch (error) {
             return rejectWithValue(error.response?.data || 'Failed to fetch admin info');
