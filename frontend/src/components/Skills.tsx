@@ -19,9 +19,9 @@ export const Skills = () => {
     dispatch(fetchSkills())
   }, [dispatch])
 
-  if (loading) return <p>Searching skills..</p>
+  if (loading) return <p className="text-center m-5">Searching skills..</p>
 
-  if (error) return <p>Something went wrong..</p>
+  if (error) return <p className="text-center m-5">Something went wrong..</p>
 
 
 

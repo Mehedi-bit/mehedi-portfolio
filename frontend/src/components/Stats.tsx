@@ -15,9 +15,9 @@ export const Stats = () => {
     }, [dispatch])
 
 
-    if (loading) return <p>Searching stats..</p>
+    if (loading) return <p className="text-center m-5">Searching stats..</p>
 
-    if (error) return <p>Something went wrong..</p>
+    if (error) return <p className="text-center m-5">Something went wrong..</p>
 
 
 

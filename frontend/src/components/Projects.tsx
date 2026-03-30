@@ -38,7 +38,7 @@ export const Projects = () => {
   }, [dispatch])
 
 
-  if (loading) return <p>Loading projects...</p>;
+  if (loading) return <p className="text-center m-5">Loading projects...</p>;
   
 
 
