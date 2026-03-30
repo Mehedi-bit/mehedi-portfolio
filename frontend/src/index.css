@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 189 100% 50%;
+    --primary-foreground: 0 0% 5%;
+
+    --secondary: 28 100% 60%;
+    --secondary-foreground: 0 0% 5%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 189 100% 50%;
+    --accent-foreground: 0 0% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 189 100% 50%;
+
+    --radius: 0.25rem;
+
+    /* Custom portfolio tokens */
+    --glow: 189 100% 50%;
+    --glow-secondary: 28 100% 60%;
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .glow-text {
+    text-shadow: 0 0 20px hsl(var(--glow) / 0.5);
+  }
+
+  .glow-border {
+    box-shadow: 0 0 20px hsl(var(--glow) / 0.3);
+  }
+
+  .hover-lift {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-4px);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .moving-border-btn {
+    @apply relative overflow-hidden;
+  }
+
+  .moving-border-btn::before {
+    content: '';
+    @apply absolute inset-0 border-2 border-primary rounded;
+    animation: rotateBorder 3s linear infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 2px, 0 2px);
+  }
+
+  @keyframes rotateBorder {
+    0% {
+      clip-path: polygon(0 0, 100% 0, 100% 2px, 0 2px);
+    }
+    25% {
+      clip-path: polygon(calc(100% - 2px) 0, 100% 0, 100% 100%, calc(100% - 2px) 100%);
+    }
+    50% {
+      clip-path: polygon(0 calc(100% - 2px), 100% calc(100% - 2px), 100% 100%, 0 100%);
+    }
+    75% {
+      clip-path: polygon(0 0, 2px 0, 2px 100%, 0 100%);
+    }
+    100% {
+      clip-path: polygon(0 0, 100% 0, 100% 2px, 0 2px);
+    }
+  }
+
+  @keyframes slide-in-left {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-slide-in-left {
+    animation: slide-in-left 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-left-delayed {
+    animation: slide-in-left 0.6s ease-out 0.2s forwards;
+    opacity: 0;
+  }
+}
